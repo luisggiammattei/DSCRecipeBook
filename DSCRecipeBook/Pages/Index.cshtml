@@ -13,6 +13,8 @@
     <blockquote>
         Please choose from the options provided to perform actions such as creating, reading, updating, or deleting entries in the recipe list.
     </blockquote>
+
+
     <div>
         <button id="list" class="btn btn-primary btn-lg"><!--onclick="list()">-->&nbsp;&nbsp;&nbsp;List&nbsp;&nbsp;&nbsp;</button>
         <!--<a id="list" class="btn btn-primary btn-lg" href="#" role="button">&nbsp;&nbsp;&nbsp;List&nbsp;&nbsp;&nbsp;</a>-->
@@ -23,28 +25,50 @@
         <button id="update" class="btn btn-primary btn-lg"><!--onclick="update()">-->Update</button>
         <!--<a id="update" class="btn btn-primary btn-lg" href="#" role="button">Update</a>-->
 
-        <button id="create" class="btn btn-primary btn-lg"><!--onclick="create()">-->Create</button>
+        <button id="create" class="btn btn-primary btn-lg" onclick="create()">Create</button>
         <!--<a id="create" class="btn btn-primary btn-lg" href="#" role="button">Create</a>-->
 
         <button id="delete" class="btn btn-primary btn-lg" style="background-color:darkred"><!--onclick="del()">-->Delete</button>
         <!--<a id="delete" class="btn btn-primary btn-lg" href="#" role="button" style="background-color:darkred">Delete</a>-->
     </div>
+
+
     <script>
         async function create() {
 
+            // Gather input values from user or use static values
+            const newUsername = "PedroSantiago";
+            const newEmail = "PedroSantiago@dsc.com";
+
+            // Create data object with input values
             const data = {
-                Username: "PedroSantiago",
-                Email: "PedroSatiago@dsc.com";
+                Username: newUsername,
+                Email: newEmail
             };
 
-            const endpoint = `/data-api/rest/Username/`;
-            const response = await fetch(endpoint, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            });
-            const result = await response.json();
-            console.table(result.value);
+            try {
+                // Specify the endpoint to which the data will be sent for creation
+                const endpoint = "/data-api/rest/Username/";
+
+                // Send a POST request to the endpoint with the data
+                const response = await fetch(endpoint, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                // Parse the response as JSON
+                const result = await response.json();
+
+                // Log the result to the console
+                console.table(result.value);
+            } catch (error) {
+                // Handle errors if any
+                console.error("Error creating new entry:", error);
+            }
+        
         }
     </script>
 </div>
