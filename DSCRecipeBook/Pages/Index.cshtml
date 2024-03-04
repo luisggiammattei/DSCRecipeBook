@@ -36,38 +36,7 @@
     <script>
         async function create() {
 
-            // Gather input values from user or use static values
-            const newUsername = "PedroSantiago";
-            const newEmail = "PedroSantiago@dsc.com";
-
-            // Create data object with input values
-            const data = {
-                Username: newUsername,
-                Email: newEmail
-            };
-
-            try {
-                // Specify the endpoint to which the data will be sent for creation
-                const endpoint = "/data-api/rest/Username/";
-
-                // Send a POST request to the endpoint with the data
-                const response = await fetch(endpoint, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                // Parse the response as JSON
-                const result = await response.json();
-
-                // Log the result to the console
-                console.table(result.value);
-            } catch (error) {
-                // Handle errors if any
-                console.error("Error creating new entry:", error);
-            }
+           
         
         }
     </script>
