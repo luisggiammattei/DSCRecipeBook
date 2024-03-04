@@ -16,7 +16,7 @@
 
 
     <div>
-        <button id="list" class="btn btn-primary btn-lg"><!--onclick="list()">-->&nbsp;&nbsp;&nbsp;List&nbsp;&nbsp;&nbsp;</button>
+        <button id="list" class="btn btn-primary btn-lg" onclick="list()">&nbsp;&nbsp;&nbsp;List&nbsp;&nbsp;&nbsp;</button>
         <!--<a id="list" class="btn btn-primary btn-lg" href="#" role="button">&nbsp;&nbsp;&nbsp;List&nbsp;&nbsp;&nbsp;</a>-->
         
         <button id="get" class="btn btn-primary btn-lg"><!--onclick="get()">-->&nbsp;&nbsp;&nbsp;Get&nbsp;&nbsp;&nbsp;</button>
@@ -34,6 +34,13 @@
 
 
     <script>
+        async function list() {
+            const endpoint = '/data-api/rest/Person';
+            const response = await fetch(endpoint);
+            const data = await response.json();
+            console.table(data.value);
+        }
+
         async function create() {
 
            
